@@ -79,6 +79,40 @@ swap(People c, People d) 함수의 c, d의 값은 객체 자체가 아니라 참
 
 
 
-## 왜 착각하게 된 것일 까?
+## 착각하게 된 이유
 
-위의 그림에서 자바가 Call by reference라면 swap의 지역변수 c,d를 수정해서 caller의 지역변수 a, b가 변경되도록 하는 방법이 있어야 한다. 
+위의 그림에서 자바가 Call by reference라면 swap의 지역변수 c,d를 수정해서 caller의 지역변수 a, b가 변경되도록 하는 방법이 있어야 한다. 자바의 객체의 경우 객체의 함수를 통해서 객체의 상태를 변화 시킬 수 있다. 
+
+```java
+class CollerTest {
+
+  void caller(){
+    People a = new People("a");
+    People b = new People("b");
+    swap(a, b);
+		system.out.print(a.name + " " + b.name);
+  }
+
+  void swap(People c, People d){
+    c.setName(b);
+    d.setName(a);
+  }
+}
+
+class People{
+  String name;
+  People(String a){
+    name = name;
+  }
+  
+  setName(String a){
+    name = a;
+  }
+}
+```
+
+위의 코드상에서 출력은 `b a`이다. 마치 callee의 코드가 caller의 변수에 영향을 미친것 같지만, 객체 자체에 영향을 미쳤다기 보다는 객체의 상태의 변화를 주었다는 것이다. 자바 JVM의 메모리 그림을 다시 보도록 하자
+
+![](./callbyvalue_picture_002.png)
+
+People의 멤버 메소드인 setName을 통해서 101, 102주소에 해당하는 객체의 상태를 변화 시켰다. 그렇다고 해서 swap 메소드가 a, b가 가리키고 있는 101, 102객체를 다른 객체로 변화시킨 것은 아니다. 즉 callee의 코드가 caller의 코드를 변화시킨것은 아니다. 위와 같은 특징 때문에 자바의 객체타입이 call by reference라고 착각할 수 있다.
