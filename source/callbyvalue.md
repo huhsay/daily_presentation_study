@@ -53,7 +53,7 @@ class CollerTest {
   void swap(People c, People d){
     People temp = c;
     c = d;
-    d = c;
+    d = temp;
   }
 }
 
@@ -94,8 +94,8 @@ class CollerTest {
   }
 
   void swap(People c, People d){
-    c.setName(b);
-    d.setName(a);
+    c.setName("b");
+    d.setName("a");
   }
 }
 
