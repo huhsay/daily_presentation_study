@@ -22,4 +22,4 @@
 
 ### 10월 8일
 
-- [JVM 정리](./source/aboutJVM.pptx)
+- [JVM 정리](./aboutJVM.pptx)
