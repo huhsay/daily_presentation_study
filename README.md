@@ -20,6 +20,12 @@
 
 - [자료구조 정리 - 자바 Collection과 알고리즘](./source/datastructure.md)
 
+# 10월
+
 ### 10월 8일
 
 - [JVM 정리](./aboutJVM.pptx)
+
+### 10월 13일
+
+- 
